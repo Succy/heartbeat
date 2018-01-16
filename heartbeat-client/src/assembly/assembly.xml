@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<assembly>
+    <id>package</id>
+    <formats>
+        <format>dir</format>
+        <format>tar.gz</format>
+    </formats>
+    <includeBaseDirectory>false</includeBaseDirectory>
+    <fileSets>
+       <fileSet>
+           <directory>src/bin</directory>
+           <outputDirectory>bin</outputDirectory>
+           <includes>
+               <include>*.sh</include>
+           </includes>
+           <lineEnding>unix</lineEnding>
+           <fileMode>0755</fileMode>
+       </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}</directory>
+            <outputDirectory>/</outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>${project.build.directory}/classes</directory>
+            <excludes>
+                <exclude>com/**</exclude>
+            </excludes>
+            <outputDirectory>resources</outputDirectory>
+        </fileSet>
+    </fileSets>
+
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+            <useProjectArtifact>false</useProjectArtifact>
+            <scope>runtime</scope>
+        </dependencySet>
+    </dependencySets>
+
+</assembly>
